@@ -7,15 +7,18 @@ import _ from "lodash";
 
 // extracts and cleans up data
 function normalizeGame(game) {
+  const runs = game.linescore.r;
   return {
     id: game.id,
     home: {
       name: game.home_team_name,
-      score: game.linescore.r.home
+      score: runs.home,
+      winner: runs.home > runs.away
     },
     away: {
       name: game.away_team_name,
-      score: game.linescore.r.away
+      score: runs.away,
+      winner: runs.home < runs.away
     },
     status: game.status.status // final, postponed or cancelled
   };
