@@ -3,6 +3,14 @@
 // make a fetch api request to get the mlb game matches on a given day
 ////
 
+/* list of json urls for different game numbers
+
+Multiple games = "http://gd2.mlb.com/components/game/mlb/year_2014/month_04/day_06/master_scoreboard.json";
+One game = "http://gd2.mlb.com/components/game/mlb/year_2016/month_10/day_04/master_scoreboard.json";
+No game = "http://gd2.mlb.com/components/game/mlb/year_2016/month_12/day_25/master_scoreboard.json";
+
+*/
+
 import _ from "lodash";
 
 // extracts and cleans up data
