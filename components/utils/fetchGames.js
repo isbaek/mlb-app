@@ -3,6 +3,8 @@
 // make a fetch api request to get the mlb game matches on a given day
 ////
 
+import _ from "lodash";
+
 // extracts and cleans up data
 function normalizeGame(game) {
   return {
@@ -10,12 +12,13 @@ function normalizeGame(game) {
     homeName: game.home_team_name,
     awayName: game.away_team_name,
     status: game.status.status, // final, postponed or cancelled
-    linescore: game.linescore.r // either home or away
+    homeScore: game.linescore.r.home,
+    awayScore: game.linescore.r.away
   };
 }
 
 // Fetch all the games in a given day
-function fetchGameOnDate() {
+function fetchGameForDate() {
   return (
     fetch(
       "http://gd2.mlb.com/components/game/mlb/year_2014/month_04/day_06/master_scoreboard.json"
@@ -34,5 +37,5 @@ function fetchGameOnDate() {
 }
 
 export default function fetchGames() {
-  return fetchGameOnDate();
+  return fetchGameForDate();
 }
