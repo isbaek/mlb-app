@@ -18,7 +18,7 @@ function normalizeGame(game) {
 }
 
 // Fetch all the games in a given day
-function fetchGameForDate() {
+function fetchGamesForDate() {
   return (
     fetch(
       "http://gd2.mlb.com/components/game/mlb/year_2014/month_04/day_06/master_scoreboard.json"
@@ -27,7 +27,14 @@ function fetchGameForDate() {
       .then(res => res.json())
       // Cleanup big JSON mess into posts
       .then(payload => {
-        return payload.data.games.game.map(child => normalizeGame(child));
+        const games = payload.data.games.game;
+
+        // if only one game, just return that game
+        if (!_.isArray(games)) {
+          return [normalizeGame(games)];
+        }
+        // otherwise map over multiple games
+        return games.map(normalizeGame);
       })
       // catch any errors
       .catch(err => {
@@ -37,5 +44,5 @@ function fetchGameForDate() {
 }
 
 export default function fetchGames() {
-  return fetchGameForDate();
+  return fetchGamesForDate();
 }
