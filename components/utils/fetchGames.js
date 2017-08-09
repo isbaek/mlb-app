@@ -9,11 +9,15 @@ import _ from "lodash";
 function normalizeGame(game) {
   return {
     id: game.id,
-    homeName: game.home_team_name,
-    awayName: game.away_team_name,
-    status: game.status.status, // final, postponed or cancelled
-    homeScore: game.linescore.r.home,
-    awayScore: game.linescore.r.away
+    home: {
+      name: game.home_team_name,
+      score: game.linescore.r.home
+    },
+    away: {
+      name: game.away_team_name,
+      score: game.linescore.r.away
+    },
+    status: game.status.status // final, postponed or cancelled
   };
 }
 
