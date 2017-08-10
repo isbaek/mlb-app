@@ -1,5 +1,7 @@
 import React from "react";
-import Link from 'next/link'
+import Link from "next/link";
+
+import LoadingView from "./LoadingView";
 
 import fetchGames from "./utils/fetchGames.js";
 
@@ -48,7 +50,7 @@ class ListView extends React.Component {
   render() {
     // wait for the games to load
     if (this.state.isLoading) {
-      return <div> Loading</div>;
+      return <LoadingView />;
     }
     return (
       <div>
