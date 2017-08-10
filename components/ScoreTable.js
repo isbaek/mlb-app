@@ -54,6 +54,8 @@ export default class ScoreTable extends React.Component {
         columns={columns}
         showPagination={false}
         defaultPageSize={2}
+        sortable={false}
+        resizable={false}
       />
     );
   }
