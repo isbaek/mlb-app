@@ -20,10 +20,9 @@
   },
   "scripts": {
     "dev": "next",
-    "build": "next build",
+    "build": "next build && next export",
     "start": "next start",
-    "export": "next export",
-    "deploy": "npm run export && gh-pages -d out"
+    "deploy": "npm run build && gh-pages -d out"
   },
   "devDependencies": {
     "babel-preset-es2015": "^6.24.1",
