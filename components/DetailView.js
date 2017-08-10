@@ -67,13 +67,11 @@ export default class DetailView extends React.Component {
           onClick={this.handleToggle}
           activeTeam={this.activeTeam()}
         />
-<<<<<<< HEAD
-        <h2>Score Table</h2>
-=======
-        <h2  className="TableHeading ScoreTable">Score Table</h2>
->>>>>>> origin/master
+        <h2 className="TableHeading ScoreTable">Score Table</h2>
         <ScoreTable game={game} />
-        <h2 className="TableHeading BattingTable">Batting Table - {this.activeTeam().name}</h2>
+        <h2 className="TableHeading BattingTable">
+          Batting Table - {this.activeTeam().name}
+        </h2>
         <BattingTable batters={this.activeTeam().batters} />
       </div>
     );
