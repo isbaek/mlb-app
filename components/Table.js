@@ -4,7 +4,7 @@ import ReactTable from "react-table";
 export default function Table(props) {
   return <ReactTable
     showPagination={false}
-    defaultPageSize={2}
+    defaultPageSize={props.data.length}
     sortable={false}
     resizable={false}
     {...props}
