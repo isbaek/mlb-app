@@ -23,7 +23,7 @@ export default class DetailView extends React.Component {
 
   componentDidMount() {
     // fetch the game scores and batting players
-    fetchGame()
+    fetchGame(this.props.gameDataDirectory)
       // save into state
       .then(game => this.setState({ game: game, isLoading: false }));
   }

@@ -1,9 +1,9 @@
-import Page from "../components/Page.js";
+import Page from "../components/Page";
 import DetailView from "../components/DetailView";
 
-const Game = () => (
+const Game = (props) => (
   <Page>
-    <DetailView />
+    <DetailView gameDataDirectory={props.url.query.id} />
   </Page>
 );
 

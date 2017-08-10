@@ -1,9 +1,10 @@
-import ListView from "../components/ListView.js";
+import Page from "../components/Page";
+import ListView from "../components/ListView";
 
 const Games = () => (
-  <div>
+  <Page>
     <ListView />
-  </div>
+  </Page>
 );
 
 export default Games;

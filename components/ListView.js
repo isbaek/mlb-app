@@ -1,20 +1,23 @@
 import React from "react";
+import Link from 'next/link'
 
 import fetchGames from "./utils/fetchGames.js";
 
 // this is a card component for displaying the winner
 function GameCardTeam({ team }) {
   if (team.winner) {
-    return <p><b>{team.name} - {team.score}</b></p>;
+    return <span><b>{team.name} - {team.score}</b></span>;
   }
-  return <p>{team.name} - {team.score}</p>;
+  return <span>{team.name} - {team.score}</span>;
 }
 
 // this is a parent component of the team game card
 function GameCard({ game }) {
   return (
     <li key={game.id}>
-      <GameCardTeam team={game.home} />
+      <Link href={`/game?id=${game.gameDataDirectory}`}>
+        <a><GameCardTeam team={game.home} /></a>
+      </Link>
       <GameCardTeam team={game.away} />
       <p>{game.status}</p>
     </li>
