@@ -39,10 +39,10 @@ export default class BattingTable extends React.Component {
     }
 
     const game = this.state.game;
-    console.log("batters: ", game.home.batters);
+
     return (
       <ReactTable
-        data={[game.home.batters, game.away.batters]}
+        data={game.home.batters}
         columns={COLUMNS}
         showPagination={false}
         defaultPageSize={2}
