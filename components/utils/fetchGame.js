@@ -16,12 +16,24 @@ export default function fetchGame() {
       .then(res => res.json())
       // Cleanup big JSON mess into games
       .then(payload => {
-        // runs, hits and errors
+        const linescore = payload.data.boxscore.linescore;
+
+        // runs, hits and errors for home and away team
         const rhe = {
-          runs: payload.data.boxscore.linescore.home_team_runs
+          home: {
+            runs: linescore.home_team_runs,
+            hits: linescore.home_team_hits,
+            errors: linescore.home_team_hits.home_team_errors
+          },
+          away: {
+            runs: linescore.away_team_runs,
+            hits: linescore.away_team_hits,
+            errors: linescore.away_team_hits.home_team_errors
+          }
         };
+
         // score array with innings
-        const scores = payload.data.boxscore.linescore.inning_line_score;
+        const scores = linescore.inning_line_score;
         // the batters of the home team
         const battersHome = _.find(payload.data.boxscore.batting, {
           team_flag: "home"
@@ -30,7 +42,7 @@ export default function fetchGame() {
         const battersAway = _.find(payload.data.boxscore.batting, {
           team_flag: "away"
         });
-        return { scores, battersAway, battersHome };
+        return { rhe, scores, battersAway, battersHome };
       })
       // catch any errors
       .catch(err => {
