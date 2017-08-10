@@ -3,10 +3,11 @@ import React from "react";
 import moment from "moment";
 import _ from "lodash";
 
+// next utils
 import Router from "next/router";
 import Link from "next/link";
 
-//components
+// components
 import LoadingView from "./LoadingView";
 import ErrorView from "./ErrorView";
 import DatePicker from "./DatePicker";
