@@ -1,9 +1,9 @@
 import Page from "../components/Page";
 import ListView from "../components/ListView";
 
-const Games = () => (
+const Games = (props) => (
   <Page>
-    <ListView />
+    <ListView date={props.url.query.date} />
   </Page>
 );
 

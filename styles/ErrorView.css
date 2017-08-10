@@ -8,6 +8,7 @@ h1 {
 
 h3 {
   font-weight: 300;
+  margin: 10px 0;
   font-size: 24px;
   color: #666666;
   display: block;
@@ -15,10 +16,10 @@ h3 {
 
 a {
   font-size: 16px;
-  color: #03A9F4;
+  color: #CA0813;
   text-decoration: none;
 }
 
 a:hover {
-  border-bottom: 2px solid #03A9F4;
+  border-bottom: 2px solid #CA0813;
 }

@@ -6,10 +6,10 @@
 @import './Page.css';
 @import 'react-table/react-table.css';
 @import './table.css';
+@import "./ErrorView.css";
 
 /* DetailView */
 @import './GameOverview.css';
-@import "../ErrorView.css";
 @import './loadingview.css';
 @import 'react-datepicker/dist/react-datepicker.css';
 

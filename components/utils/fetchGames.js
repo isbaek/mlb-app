@@ -16,7 +16,7 @@ import _ from "lodash";
 // extracts and cleans up data
 function normalizeGame(game) {
   // represents the score runs
-  const r = game.linescore.r;
+  const r = (game.linescore && game.linescore.r) || {home: 0, away: 0};
   const runs = { home: Number(r.home), away: Number(r.away) };
   return {
     id: game.id,
@@ -40,14 +40,15 @@ function normalizeGame(game) {
 }
 
 // Fetch all the games in a given day
-function fetchGamesForDate() {
+function fetchGamesForDate(year, month, day) {
+    console.log('year:', year);
+    console.log('month:', month);
+    console.log('day:', day);
   return (
-    /*fetch(
-      `http://gd2.mlb.com/components/game/mlb/year_${year}/month_${month}/day_${day}/master_scoreboard.json`
-    )*/
     fetch(
-      "http://gd2.mlb.com/components/game/mlb/year_2014/month_04/day_06/master_scoreboard.json"
+      `http://gd2.mlb.com/components/game/mlb/year_${year}/month_${month}/day_${day}/master_scoreboard.json`
     )
+    //fetch("http://gd2.mlb.com/components/game/mlb/year_2014/month_04/day_06/master_scoreboard.json")
       // Parse response as JSON
       .then(res => res.json())
       // Cleanup big JSON mess into posts
@@ -61,13 +62,7 @@ function fetchGamesForDate() {
         // otherwise map over multiple games
         return games.map(normalizeGame);
       })
-      // catch any errors
-      .catch(err => {
-        console.log("parsing failed", err);
-      })
   );
 }
 
-export default function fetchGames() {
-  return fetchGamesForDate();
-}
+export default fetchGamesForDate;

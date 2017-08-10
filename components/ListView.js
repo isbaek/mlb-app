@@ -1,14 +1,17 @@
 //libs
 import React from "react";
-import Link from "next/link";
 import moment from "moment";
+
+import Router from 'next/router'
+import Link from "next/link";
 
 //components
 import LoadingView from "./LoadingView";
+import ErrorView from "./ErrorView";
 import DatePicker from "./DatePicker";
 
 //utils
-import fetchGames from "./utils/fetchGames.js";
+import fetchGames from "./utils/fetchGames";
 
 ////
 // Presentational
@@ -60,6 +63,7 @@ class ListView extends React.Component {
     super(props);
 
     this.state = {
+      loadingError: "",
       isLoading: true,
       games: [],
       date: moment()
@@ -67,19 +71,43 @@ class ListView extends React.Component {
   }
 
   componentDidMount() {
-    // make a fetch game request
-    fetchGames()
+    this.fetchGames(this.props.date);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.fetchGames(nextProps.date);
+  }
+
+  fetchGames(date) {
+    this.setState()
+
+    // Supose date is formatted as YYYY/MM/DD
+    const [ year, month, day ] = date.split('/', 3);
+    console.log('- year:', year);
+    console.log('- month:', month);
+    console.log('- day:', day);
+    // Fetch games for a given day
+    fetchGames(year, month, day)
       // save into state
-      .then(games => this.setState({ games: games, isLoading: false }));
+      .then(games => this.setState({ games: games, isLoading: false }))
+      // Catch error
+      .catch(err => this.setState({ errorLoading: String(err), isLoading: false }));
   }
 
   change = date => {
     this.setState({
       date: date
     });
+    // Navigate to specific date
+    Router.push(`/games?date=${date.format("YYYY/MM/DD")}`);
   };
 
   render() {
+    // Handle errors in load
+    if (this.state.errorLoading) {
+      return <ErrorView msg={this.state.errorLoading} />;
+    }
+
     // wait for the games to load
     if (this.state.isLoading) {
       return <LoadingView />;
