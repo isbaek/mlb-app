@@ -2,6 +2,14 @@ const path = require('path')
 const glob = require('glob')
 
 module.exports = {
+  exportPathMap: function () {
+    return {
+      "/": { page: "/" },
+      "/game": { page: "/game" },
+      "/games": { page: "/games" },
+    };
+  },
+
   webpack: (config, { dev }) => {
     config.module.rules.push(
       {
