@@ -55,9 +55,5 @@ export default function fetchGame(gameDataDirectory) {
 
         return { home, away, date: boxscore.date };
       })
-      // catch any errors
-      .catch(err => {
-        console.log("parsing failed", err);
-      })
   );
 }
