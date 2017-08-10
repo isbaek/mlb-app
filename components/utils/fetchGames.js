@@ -16,15 +16,18 @@ import _ from "lodash";
 // extracts and cleans up data
 function normalizeGame(game) {
   // represents the score runs
-  const runs = game.linescore.r;
+  const r = game.linescore.r;
+  const runs = { home: Number(r.home), away: Number(r.away) };
   return {
     id: game.id,
     home: {
+      code: game.home_code,
       name: game.home_team_name,
       score: runs.home,
       winner: runs.home > runs.away
     },
     away: {
+      code: game.away_code,
       name: game.away_team_name,
       score: runs.away,
       winner: runs.home < runs.away
