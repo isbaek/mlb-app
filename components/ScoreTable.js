@@ -49,7 +49,7 @@ export default class ScoreTable extends React.Component {
     // get the inning scores for home
     const homeScores = data.map(score => score.home).slice(0, 9);
     // get the inning scores for away
-    const awayScores = data.map(score => scores.away).slice(0, 9);
+    const awayScores = data.map(score => score.away).slice(0, 9);
 
     return <ReactTable data={[homeScores, awayScores]} columns={columns} />;
   }
