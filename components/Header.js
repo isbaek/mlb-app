@@ -1,7 +1,7 @@
 function Header() {
     return (
-    <div class="Header">
-        <img class="HeaderLogo" src="/static/mlb_logo.svg" />
+    <div className="Header">
+        <img className="HeaderLogo" src="/static/mlb_logo_short.png" />
     </div>
     );
 }

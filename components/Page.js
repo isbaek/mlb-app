@@ -1,7 +1,10 @@
-import stylesheet from 'styles/index.css'
+import Header from './Header';
+
+import stylesheet from 'styles/index.css';
 
 export default (props) =>
   <div>
     <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
-    <div children={props.children} />
+    <Header />
+    <div className="content" children={props.children} />
   </div>

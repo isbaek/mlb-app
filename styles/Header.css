@@ -1,0 +1,17 @@
+.Header {
+    background: #fff;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #e8e8e8;
+    box-shadow: 0 0 4px rgba(0,0,0,0.1);
+    background: #CC0000;
+    background: #FFF;
+    padding: 5px;
+}
+
+.HeaderLogo {
+    height: 50px;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    margin: auto;
+    display: block;
+}
