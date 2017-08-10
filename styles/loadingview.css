@@ -5,12 +5,12 @@
 }
 
 .loader {
-    border: 16px solid #CCCCCC; /* Light grey */
-    border-top: 16px solid #03A9F4; /* Blue */
+    border: 8px solid #eee; /* Light grey */
+    border-top: 8px solid #CA0813; /* Blue */
     border-radius: 50%;
     width: 45px;
     height: 45px;
-    animation: spin 2s linear infinite;
+    animation: spin 0.5s linear infinite;
 }
 
 @keyframes spin {
