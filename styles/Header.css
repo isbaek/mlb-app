@@ -15,3 +15,7 @@
     margin: auto;
     display: block;
 }
+
+.HeaderLogo:hover {
+    cursor: pointer;
+}
