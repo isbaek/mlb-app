@@ -101,7 +101,7 @@ class ListView extends React.Component {
       .then(games => this.setState({ games: games, isLoading: false }))
       // Catch error
       .catch(err =>
-        this.setState({ errorLoading: String(err), isLoading: false })
+        this.setState({ loadingError: String(err), isLoading: false })
       );
   }
 
@@ -116,8 +116,8 @@ class ListView extends React.Component {
 
   render() {
     // Handle errors in load
-    if (this.state.errorLoading) {
-      return <ErrorView msg={this.state.errorLoading} />;
+    if (this.state.loadingError) {
+      return <ErrorView msg="Baseball not found!" />;
     }
 
     // wait for the games to load
