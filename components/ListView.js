@@ -2,6 +2,7 @@ import React from "react";
 
 import fetchGames from "./utils/fetchGames.js";
 
+// this is a card component for displaying the winner
 function GameCardTeam({ team }) {
   if (team.winner) {
     return <p><b>{team.name} - {team.score}</b></p>;
@@ -9,6 +10,7 @@ function GameCardTeam({ team }) {
   return <p>{team.name} - {team.score}</p>;
 }
 
+// this is a parent component of the team game card
 function GameCard({ game }) {
   return (
     <li key={game.id}>
@@ -35,6 +37,10 @@ class ListView extends React.Component {
       // save into state
       .then(games => this.setState({ games: games, isLoading: false }));
   }
+
+  handleClick = () => {
+    const games = this.state.games;
+  };
 
   render() {
     // wait for the games to load
