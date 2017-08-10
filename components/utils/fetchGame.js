@@ -10,13 +10,19 @@ import 'whatwg-fetch';
 export default function fetchGame(gameDataDirectory) {
   return (
     fetch(`http://gd2.mlb.com${gameDataDirectory}/boxscore.json`)
-    //fetch("http://gd2.mlb.com/components/game/mlb/year_2016/month_10/day_04/gid_2016_10_04_balmlb_tormlb_1/boxscore.json")
+      //fetch("http://gd2.mlb.com/components/game/mlb/year_2016/month_10/day_04/gid_2016_10_04_balmlb_tormlb_1/boxscore.json")
       // Parse response as JSON
       .then(res => res.json())
       // Cleanup big JSON mess into games
       .then(payload => {
         const boxscore = payload.data.boxscore;
         const linescore = boxscore.linescore;
+
+        // comparing score utility const
+        const runs = {
+          home: Number(linescore.home_team_runs),
+          away: Number(linescore.away_team_runs)
+        };
 
         // runs, hits and errors for home and away team
         const home = {
@@ -30,7 +36,8 @@ export default function fetchGame(gameDataDirectory) {
           scores: _.map(linescore.inning_line_score, "home"),
           batters: _.find(payload.data.boxscore.batting, {
             team_flag: "home"
-          }).batter
+          }).batter,
+          winner: runs.home > runs.away
         };
         const away = {
           code: boxscore.away_team_code,
@@ -43,7 +50,8 @@ export default function fetchGame(gameDataDirectory) {
           scores: _.map(linescore.inning_line_score, "away"),
           batters: _.find(payload.data.boxscore.batting, {
             team_flag: "away"
-          }).batter
+          }).batter,
+          winner: runs.home < runs.away
         };
 
         return { home, away, date: boxscore.date };
