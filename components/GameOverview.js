@@ -1,7 +1,7 @@
 import React from "react";
 
 function teamLogoURL(teamCode) {
-  return `https://securea.mlb.com/mlb/images/team_logos/124x150/${teamCode}@2x.png`;
+  return `https://securea.mlb.com/mlb/images/team_logos/124x150/${teamCode}.png`;
 }
 
 function LogoScore({ team }) {
