@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 .GameCard {
@@ -66,10 +67,30 @@
 }
 
 .GameCardStatus.Final {
+  display: none;
 }
 .GameCardStatus.Postponed {
     background: orange;
 }
 .GameCardStatus.Cancelled {
     background: red;
+}
+
+.ListView {
+  text-align: center;
+}
+
+.ListViewTitle {
+  margin: 32px;
+  margin-top: 0px;
+  text-transform: capitalize;
+  font-size: 32px;
+}
+
+.react-datepicker__input-container > input {
+  font-size: 20px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
 }
