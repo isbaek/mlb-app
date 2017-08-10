@@ -1,9 +1,18 @@
+//libs
 import React from "react";
 import Link from "next/link";
+import moment from "moment";
 
+//components
 import LoadingView from "./LoadingView";
+import DatePicker from "./DatePicker";
 
+//utils
 import fetchGames from "./utils/fetchGames.js";
+
+////
+// Presentational
+////
 
 // this is a card component for displaying the winner
 function GameCardTeam({ team }) {
@@ -16,15 +25,21 @@ function GameCardTeam({ team }) {
 // this is a parent component of the team game card
 function GameCard({ game }) {
   return (
-    <li key={game.id}>
-      <Link href={`/game?id=${game.gameDataDirectory}`}>
-        <a><GameCardTeam team={game.home} /></a>
-      </Link>
-      <GameCardTeam team={game.away} />
-      <p>{game.status}</p>
-    </li>
+    <Link href={`/game?id=${game.gameDataDirectory}`}>
+      <a>
+        <li key={game.id}>
+          <GameCardTeam team={game.home} />
+          <GameCardTeam team={game.away} />
+          <p>{game.status}</p>
+        </li>
+      </a>
+    </Link>
   );
 }
+
+////
+// Container
+////
 
 class ListView extends React.Component {
   constructor(props) {
@@ -32,7 +47,8 @@ class ListView extends React.Component {
 
     this.state = {
       isLoading: true,
-      games: []
+      games: [],
+      date: moment()
     };
   }
 
@@ -43,8 +59,10 @@ class ListView extends React.Component {
       .then(games => this.setState({ games: games, isLoading: false }));
   }
 
-  handleClick = () => {
-    const games = this.state.games;
+  change = date => {
+    this.setState({
+      date: date
+    });
   };
 
   render() {
@@ -54,6 +72,7 @@ class ListView extends React.Component {
     }
     return (
       <div>
+        <DatePicker onChange={this.change} selected={this.state.startDate} />
         <ul>
           {this.state.games.map(game => <GameCard game={game} />)}
         </ul>

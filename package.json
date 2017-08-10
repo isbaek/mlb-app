@@ -9,6 +9,7 @@
     "glamor": "^2.20.39",
     "glob": "^7.1.2",
     "lodash": "^4.17.4",
+    "moment": "^2.18.1",
     "next": "latest",
     "postcss-easy-import": "^2.1.0",
     "postcss-loader": "^2.0.6",

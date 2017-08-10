@@ -39,6 +39,9 @@ function normalizeGame(game) {
 // Fetch all the games in a given day
 function fetchGamesForDate() {
   return (
+    /*fetch(
+      `http://gd2.mlb.com/components/game/mlb/year_${year}/month_${month}/day_${day}/master_scoreboard.json`
+    )*/
     fetch(
       "http://gd2.mlb.com/components/game/mlb/year_2014/month_04/day_06/master_scoreboard.json"
     )

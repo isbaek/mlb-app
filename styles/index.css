@@ -9,3 +9,6 @@
 
 /* DetailView */
 @import './GameOverview.css';
+@import './loadingview.css';
+@import 'react-datepicker/dist/react-datepicker.css';
+
