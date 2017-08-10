@@ -8,5 +8,10 @@
 .TeamImage {
   width: 32px;
   height: auto;
-  margin: 5px;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.TeamImage:hover, .TeamImage.active {
+  background-color: #f0f0f0;
 }
