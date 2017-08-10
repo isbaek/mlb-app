@@ -14,7 +14,6 @@ function parseDate(dateStr) {
 
 const Games = props => (
   <Page>
-    <FavoriteTeam />
     <ListView date={parseDate(props.url.query.date)} />
   </Page>
 );
