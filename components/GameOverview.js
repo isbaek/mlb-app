@@ -4,11 +4,11 @@ function teamLogoURL(teamCode) {
   return `https://securea.mlb.com/mlb/images/team_logos/124x150/${teamCode}.png`;
 }
 
-function LogoScore({ team }) {
+function LogoScore({ team, onClick, active }) {
   return (
     <div
-      className={`LogoScore ${team.winner ? "Winner" : ""}`}
-      onClick={batters => team.onClick(batters)}
+      className={`LogoScore ${team.winner ? "Winner" : ""} ${team.code === active.code ? "active" : ""}`}
+      onClick={onClick}
     >
       <img className="LogoScoreImage" src={teamLogoURL(team.code)} />
       <p>({team.totalWins} - {team.totalLosses})</p>
@@ -27,12 +27,12 @@ function GameSummary({ game }) {
   );
 }
 
-export default function GameOverview({ game }) {
+export default function GameOverview({ game, onClick, activeTeam }) {
   return (
     <div className="GameOverview">
-      <LogoScore team={game.away} />
+      <LogoScore team={game.away} onClick={onClick} active={activeTeam} />
       <GameSummary game={game} />
-      <LogoScore team={game.home} />
+      <LogoScore team={game.home} onClick={onClick} active={activeTeam} />
     </div>
   );
 }
