@@ -28,7 +28,9 @@ function normalizeGame(game) {
       score: runs.away,
       winner: runs.home < runs.away
     },
-    status: game.status.status // final, postponed or cancelled
+    // final, postponed or cancelled
+    status: game.status.status,
+    gameDataDirectory: game.game_data_directory
   };
 }
 
