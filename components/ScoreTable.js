@@ -5,28 +5,26 @@ import ReactTable from "react-table";
 import fetchGame from "./utils/fetchGame.js";
 
 // column labels for table
-const COLUMNS = [
-  "Team Name",
-  "1",
-  "2",
-  "3",
-  "4",
-  "5",
-  "6",
-  "7",
-  "8",
-  "9",
-  "R",
-  "H",
-  "E"
-];
+function genColumns(home) {
+  return [].concat(
+  { Header: "Team Name", accessor: "name" },
+  // Dynamically generate inning columns
+  _.range(1, home.scores.length + 1).map(inning => ({
+    Header: String(inning),
+    accessor: `scores.${inning - 1}`,
+  })),
+  { Header: "R", accessor: "runs" },
+  { Header: "H", accessor: "hits" },
+  { Header: "E", accessor: "errors" },
+  );
+};
 
 export default class ScoreTable extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      scores: [],
+      game: null,
       isLoading: true
     };
   }
@@ -35,22 +33,23 @@ export default class ScoreTable extends React.Component {
     // fetch the game scores and batting players
     fetchGame()
       // save into state
-      .then(scores => this.setState({ scores: scores, isLoading: false }));
+      .then(game => this.setState({ game: game, isLoading: false }));
   }
 
   render() {
     if (this.state.isLoading) {
       return <div>Loading</div>;
     }
-    // map each label on to the column
-    const columns = COLUMNS.map(c => ({ Header: c, accessor: c }));
 
-    const data = this.state.scores.scores;
-    // get the inning scores for home
-    const homeScores = data.map(score => score.home).slice(0, 9);
-    // get the inning scores for away
-    const awayScores = data.map(score => score.away).slice(0, 9);
+    const game = this.state.game;
 
-    return <ReactTable data={[homeScores, awayScores]} columns={columns} />;
+    // Columns will vary depending on number of innings
+    // so we need to generate them dynamically
+    const columns = genColumns(game.home);
+
+    return <ReactTable data={[
+      game.home,
+      game.away,
+    ]} columns={columns} />;
   }
 }
