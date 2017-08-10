@@ -4,6 +4,10 @@ import ReactTable from "react-table";
 
 import fetchGame from "./utils/fetchGame.js";
 
+function teamLogoURL(teamCode) {
+  return `https://securea.mlb.com/mlb/images/team_logos/124x150/${teamCode}@2x.png`;
+}
+
 export default class DetailView extends React.Component {
   constructor(props) {
     super(props);
