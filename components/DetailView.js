@@ -27,13 +27,6 @@ export default class DetailView extends React.Component {
       .then(game => this.setState({ game: game, isLoading: false }));
   }
 
-  handleToggle = e => {
-    e.preventDefault();
-    this.setState({
-      toggleTable: !this.state.toggleTable
-    });
-  };
-
   render() {
     if (this.state.isLoading) {
       return <LoadingView />;
