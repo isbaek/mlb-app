@@ -5,27 +5,31 @@ function teamLogoURL(teamCode) {
 }
 
 function LogoScore({ team }) {
-    return <div className="LogoScore">
-        <img className="LogoScoreImage" src={teamLogoURL(team.code)} />
-        <p>({team.totalWins} - {team.totalLosses})</p>
-    </div>;
+  return (
+    <div className={`LogoScore ${team.winner ? "Winner" : ""}`}>
+      <img className="LogoScoreImage" src={teamLogoURL(team.code)} />
+      <p>({team.totalWins} - {team.totalLosses})</p>
+    </div>
+  );
 }
 
 function GameSummary({ game }) {
-    return <div className="GameSummary">
-        <h2 className="GameSummaryTitle">
-            {game.away.name} {game.away.runs}, {game.home.name} {game.home.runs}
-        </h2>
-        <p className="GameSummaryDate">{game.date}</p>
-    </div>;
+  return (
+    <div className="GameSummary">
+      <h2 className="GameSummaryTitle">
+        {game.away.name} {game.away.runs}, {game.home.name} {game.home.runs}
+      </h2>
+      <p className="GameSummaryDate">{game.date}</p>
+    </div>
+  );
 }
 
 export default function GameOverview({ game }) {
   return (
     <div className="GameOverview">
-        <LogoScore team={game.away} />
-        <GameSummary game={game} />
-        <LogoScore team={game.home} />
+      <LogoScore team={game.away} />
+      <GameSummary game={game} />
+      <LogoScore team={game.home} />
     </div>
   );
 }
