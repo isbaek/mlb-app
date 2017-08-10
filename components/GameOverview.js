@@ -1,5 +1,7 @@
 import React from "react";
 
+import ImgFallback from "react-image-fallback";
+
 function teamLogoURL(teamCode) {
   return `https://securea.mlb.com/mlb/images/team_logos/124x150/${teamCode}.png`;
 }
@@ -10,7 +12,12 @@ function LogoScore({ team, onClick, active }) {
       className={`LogoScore ${team.winner ? "Winner" : ""} ${team.code === active.code ? "active" : ""}`}
       onClick={onClick}
     >
-      <img className="LogoScoreImage" src={teamLogoURL(team.code)} />
+      <ImgFallback
+        className="LogoScoreImage"
+        src={teamLogoURL(team.code)}
+        fallbackImage="static/ghost.png"
+        alt={team.code}
+      />
       <p>({team.totalWins} - {team.totalLosses})</p>
     </div>
   );

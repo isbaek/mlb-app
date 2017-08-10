@@ -14,6 +14,7 @@ import DatePicker from "./DatePicker";
 
 //utils
 import fetchGames from "./utils/fetchGames";
+import ImgFallback from "react-image-fallback";
 
 ////
 // Presentational
@@ -28,7 +29,12 @@ function GameCardTeam({ team }) {
   return (
     <div className={`GameCardTeam ${team.winner ? "Winner" : ""}`}>
       <span className="GameCardTeamName">{team.name}</span>
-      <img className="GameCardTeamImage" src={teamLogoURL(team.code)} />
+      <ImgFallback
+        className="GameCardTeamImage"
+        src={teamLogoURL(team.code)}
+        fallbackImage="static/ghost.png"
+        alt={team.name}
+      />
       <p className="GameCardTeamScore">{team.score}</p>
     </div>
   );
