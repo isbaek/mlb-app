@@ -131,6 +131,9 @@ class ListView extends React.Component {
 
     return (
       <div className="ListView">
+        <h1 className="ListViewTitle">
+          {this.props.date.format("dddd Do of MMM YYYY")}
+        </h1>
         <DatePicker onChange={this.change} date={this.props.date} />
         <div className="GameCards">
           {sortedGames.map(game => <GameCard game={game} />)}
