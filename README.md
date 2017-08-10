@@ -28,6 +28,7 @@ This is an application that shows the MLB matches and finished scores for a give
 * UI/UX: didn't know where to place the favoriting of team; whether to create a separate page (which seemed awkward), games page (crowded) and game page(doesn't make sense)
 * using create-react-app's babel's preset as the Fetch promise was not accessible by some older browsers
 * making sure to write clean code and break down into fns
+* acccording to caniuse.com, fetch api are not supported by IE and Safari < 10. 3. Although a solution for safari has been implemented, ie standard is hard to satisfy. Thus, best for viewing in Chrome or Firefox
 
 ### TODO & Ideas
 - [ ] Figure out the best UI.UX choice to implement "favorite team component"
