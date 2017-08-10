@@ -16,11 +16,13 @@ export default function fetchGame() {
       .then(res => res.json())
       // Cleanup big JSON mess into games
       .then(payload => {
-        const linescore = payload.data.boxscore.linescore;
+        const boxscore = payload.data.boxscore;
+        const linescore = boxscore.linescore;
 
         // runs, hits and errors for home and away team
         const home = {
-          name: payload.data.boxscore.home_sname,
+          code: boxscore.home_team_code,
+          name: boxscore.home_sname,
           runs: linescore.home_team_runs,
           hits: linescore.home_team_hits,
           errors: linescore.home_team_errors,
@@ -30,7 +32,8 @@ export default function fetchGame() {
           })
         };
         const away = {
-          name: payload.data.boxscore.away_sname,
+          code: boxscore.away_team_code,
+          name: boxscore.away_sname,
           runs: linescore.away_team_runs,
           hits: linescore.away_team_hits,
           errors: linescore.away_team_errors,
