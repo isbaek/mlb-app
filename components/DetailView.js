@@ -56,7 +56,7 @@ export default class DetailView extends React.Component {
 
     // catch any errors
     if (this.state.loadingError) {
-      return <ErrorView msg="Baseball not found :(" />;
+      return <ErrorView msg="Baseball not found :( Stay tuned!" />;
     }
 
     const game = this.state.game;
