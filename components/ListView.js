@@ -118,7 +118,7 @@ class ListView extends React.Component {
   render() {
     // Handle errors in load
     if (this.state.loadingError) {
-      return <ErrorView msg="Baseball not found!" />;
+      return <ErrorView msg="No baseball games here!" />;
     }
 
     // wait for the games to load
