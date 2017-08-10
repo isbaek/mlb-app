@@ -16,7 +16,11 @@
     ]
   ],
   "presets": [
-    "next/babel"
+    ["env", {
+      "targets": {
+        "browsers": ["last 2 versions", "safari >= 7"]
+      }
+    }]
   ],
   "ignore": []
 }
