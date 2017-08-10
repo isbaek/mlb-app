@@ -22,7 +22,7 @@
     "dev": "next",
     "build": "next build && next export",
     "start": "next start",
-    "cname": "echo 'mlb-app.inseobaek.com' > ./out/CNAME && touch ./out/.nojekyll ",
+    "cname": "echo 'mlb-app.inseobaek.com' > ./out/CNAME && touch ./out/.nojekyll",
     "deploy": "export NODE_ENV=production; npm run build && npm run cname && gh-pages -d out"
   },
   "devDependencies": {

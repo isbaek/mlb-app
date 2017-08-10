@@ -60,4 +60,5 @@ typings/
 # Ignore next files
 /.next/
 /out/
+!/out/.nojekyll
 /export/
