@@ -4,14 +4,13 @@
 ////
 
 import _ from "lodash";
-import 'whatwg-fetch';
+// handle older safari version that cannot read fetch
+import "whatwg-fetch";
 
 // Fetch one game
 export default function fetchGame(gameDataDirectory) {
   return (
     fetch(`http://gd2.mlb.com${gameDataDirectory}/boxscore.json`)
-      //fetch("http://gd2.mlb.com/components/game/mlb/year_2016/month_10/day_04/gid_2016_10_04_balmlb_tormlb_1/boxscore.json")
-      // Parse response as JSON
       .then(res => res.json())
       // Cleanup big JSON mess into games
       .then(payload => {
