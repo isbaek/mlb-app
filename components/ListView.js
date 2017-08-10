@@ -72,7 +72,7 @@ class ListView extends React.Component {
     }
     return (
       <div>
-        <DatePicker onChange={this.change} selected={this.state.startDate} />
+        <DatePicker onChange={this.change} date={this.state.date} />
         <ul>
           {this.state.games.map(game => <GameCard game={game} />)}
         </ul>
