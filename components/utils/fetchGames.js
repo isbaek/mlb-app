@@ -30,7 +30,8 @@ function normalizeGame(game) {
     },
     // final, postponed or cancelled
     status: game.status.status,
-    gameDataDirectory: game.game_data_directory
+    gameDataDirectory: game.game_data_directory,
+    date: game.original_date
   };
 }
 
