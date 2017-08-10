@@ -1,26 +1,21 @@
-import React from 'react';
-import Link from 'next/link';
-import _ from 'lodash';
+import React from "react";
+import Link from "next/link";
 
-// Get teams (names and codes)
-import getTeams from './utils/teams';
-const TEAMS = getTeams();
+// libs
+import _ from "lodash";
+import moment from "moment";
 
-function teamLogoURL(teamCode) {
-  return `https://securea.mlb.com/mlb/images/team_logos/124x150/${teamCode}.png`;
-}
-
+// components
+import ListView from "./ListView";
+import FavoriteTeam from "./FavoriteTeam";
 
 export default class Homepage extends React.Component {
-
-    render() {
-        return <div className="HomepageTeamList">
-          {TEAMS.map(team => (
-            <div className="HomepageTeam">
-              <img src={teamLogoURL(team.code)} />
-              <span>{team.name}</span>
-            </div>
-          ))}
-        </div>;
-    }
+  render() {
+    return (
+      <div>
+        <FavoriteTeam />
+        <ListView date={moment("2017/08/09", "YYYY/MM/DD")} />
+      </div>
+    );
+  }
 }
