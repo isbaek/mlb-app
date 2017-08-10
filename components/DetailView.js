@@ -27,6 +27,19 @@ export default class DetailView extends React.Component {
       .then(game => this.setState({ game: game, isLoading: false }));
   }
 
+  handleToggle = () => {
+    this.setState({
+      toggleTable: !this.state.toggleTable
+    });
+  };
+
+  activeTeam = () => {
+    if (this.state.toggleTable) {
+      return this.state.game.home;
+    }
+    return this.state.game.away;
+  };
+
   render() {
     if (this.state.isLoading) {
       return <LoadingView />;
@@ -35,12 +48,15 @@ export default class DetailView extends React.Component {
     const game = this.state.game;
     return (
       <div>
-        <GameOverview game={game} />
+        <GameOverview
+          game={game}
+          onClick={this.handleToggle}
+          activeTeam={this.activeTeam()}
+        />
+        <h2>ScoreTable</h2>
         <ScoreTable game={game} />
-        {this.state.toggleTable
-          ? <BattingTable game={game.home.batters} />
-          : <BattingTable game={game.away.batters} />}
-        <button onClick={this.handleToggle} />
+        <h2>Batting Table - {this.activeTeam().name}</h2>
+        <BattingTable batters={this.activeTeam().batters} />
       </div>
     );
   }
