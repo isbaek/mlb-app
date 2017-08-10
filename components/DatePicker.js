@@ -9,7 +9,8 @@ export default function DatePicker(props) {
       todayButton={"Today"}
       dateFormat="MM/DD/YYYY"
       selected={props.date}
-      onChange={(date) => props.onChange(date)}
+      onChange={date => props.onChange(date)}
+      maxDate={moment()}
     />
   );
 }
