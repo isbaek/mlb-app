@@ -25,16 +25,19 @@ This is an application that shows the MLB matches and finished scores for a give
 * Figuring out routing and using Next.js as routing to navigate between games > game 
 * Organizing the react components in a hierachical structure, making sure props and state were properly communicated from top down
 * Using different libraries and making sure they were reliable/compatible with my code
-* UI/UX: didn't know where to place the favoriting of team; whether to create a separate page (which seemed awkward), games page (crowded) and game page(doesn't make sense)
+* UI/UX: didn't know where to place the favoriting of team; whether to create a separate page (which seemed awkward), games page (crowded) and game page(doesn't make sense) -> you can view the src code on FavoriteTeam.js
 * using create-react-app's babel's preset as the Fetch promise was not accessible by some older browsers
 * making sure to write clean code and break down into fns
 * acccording to caniuse.com, fetch api are not supported by IE and Safari < 10. 3. Although a solution for safari has been implemented, ie standard is hard to satisfy. Thus, best for viewing in Chrome or Firefox
+
 
 ### TODO & Ideas
 - [ ] Figure out the best UI.UX choice to implement "favorite team component"
 - [ ] Put some highlight videos of the match in either games or game page
 - [ ] Learn server-side rendering to reproduce cleaner URLS using Next & Express
 - [ ] Adjust for different phone sizes ( while still uses flex, font sizes dont decrease )
+- [ ] Use other json data available to make it more tailored to specific fans for example.. 
+- [ ] Maybe redirecting the user to buy the ticket for the upcoming match (as it doesnt show future games atm)
 - [ ] Learn more about baseball
 
 ### Libraries Used
