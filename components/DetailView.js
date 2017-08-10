@@ -1,4 +1,5 @@
 import React from "react";
+import Router from "next/router";
 
 //import presentational components
 import GameOverview from "./GameOverview";
@@ -18,7 +19,7 @@ export default class DetailView extends React.Component {
       game: null,
       isLoading: true,
       toggleTable: true,
-      loadingError: ""
+      loadingError: null
     };
   }
 
@@ -48,6 +49,11 @@ export default class DetailView extends React.Component {
     return this.state.game.away;
   };
 
+  // go back to the previous game view
+  popToGame = () => {
+    Router.back();
+  };
+
   render() {
     // handle loading
     if (this.state.isLoading) {
@@ -56,17 +62,21 @@ export default class DetailView extends React.Component {
 
     // catch any errors
     if (this.state.loadingError) {
-      return <ErrorView msg="Baseball not found :( Stay tuned!" />;
+      return <ErrorView msg={this.state.loadingError} />;
     }
 
     const game = this.state.game;
     return (
       <div>
+        <button className="Button" onClick={this.popToGame}>
+          {"< Back"}
+        </button>
         <GameOverview
           game={game}
           onClick={this.handleToggle}
           activeTeam={this.activeTeam()}
         />
+
         <h2 className="TableHeading ScoreTable">Score Table</h2>
         <ScoreTable game={game} />
         <h2 className="TableHeading BattingTable">
