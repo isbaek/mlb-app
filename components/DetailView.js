@@ -5,6 +5,7 @@ import GameOverview from "./GameOverview";
 import ScoreTable from "./ScoreTable";
 import BattingTable from "./BattingTable";
 import LoadingView from "./LoadingView";
+import ErrorView from "./ErrorView";
 
 //utils
 import fetchGame from "./utils/fetchGame.js";
@@ -16,7 +17,8 @@ export default class DetailView extends React.Component {
     this.state = {
       game: null,
       isLoading: true,
-      toggleTable: true
+      toggleTable: true,
+      loadingError: ""
     };
   }
 
@@ -24,15 +26,21 @@ export default class DetailView extends React.Component {
     // fetch the game scores and batting players
     fetchGame(this.props.gameDataDirectory)
       // save into state
-      .then(game => this.setState({ game: game, isLoading: false }));
+      .then(game => this.setState({ game: game, isLoading: false }))
+      // catch errors
+      .catch(err =>
+        this.setState({ loadingError: String(err), isLoading: false })
+      );
   }
 
+  // toggle batter view
   handleToggle = () => {
     this.setState({
       toggleTable: !this.state.toggleTable
     });
   };
 
+  // get the current active team batter view
   activeTeam = () => {
     if (this.state.toggleTable) {
       return this.state.game.home;
@@ -41,8 +49,14 @@ export default class DetailView extends React.Component {
   };
 
   render() {
+    // handle loading
     if (this.state.isLoading) {
       return <LoadingView />;
+    }
+
+    // catch any errors
+    if (this.state.loadingError) {
+      return <ErrorView msg="Baseball not found :(" />;
     }
 
     const game = this.state.game;
@@ -53,7 +67,7 @@ export default class DetailView extends React.Component {
           onClick={this.handleToggle}
           activeTeam={this.activeTeam()}
         />
-        <h2>ScoreTable</h2>
+        <h2>Score Table</h2>
         <ScoreTable game={game} />
         <h2>Batting Table - {this.activeTeam().name}</h2>
         <BattingTable batters={this.activeTeam().batters} />
