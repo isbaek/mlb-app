@@ -13,38 +13,15 @@ const COLUMNS = [
   { Header: "BB", accessor: "bb", minWidth: 20 },
   { Header: "SO", accessor: "so", minWidth: 20 },
   { Header: "LOB", accessor: "lob", minWidth: 20 },
-  { Header: "AVG", accessor: "avg", minWidth: 20 }
+  { Header: "AVG", accessor: "avg", minWidth: 20 },
+  { Header: "OPS", accessor: "ops", minWidth: 20 }
 ];
 
-export default class BattingTable extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      game: null,
-      isLoading: true
-    };
-  }
-
-  componentDidMount() {
-    // fetch the game scores and batting players
-    fetchGame()
-      // save into state
-      .then(game => this.setState({ game: game, isLoading: false }));
-  }
-
-  render() {
-    if (this.state.isLoading) {
-      return <div>Loading</div>;
-    }
-
-    const game = this.state.game;
-
-    return (
-      <Table
-        data={game.home.batters}
-        columns={COLUMNS}
-      />
-    );
-  }
+export default function BattingTable({ game }) {
+  return (
+    <div>
+      <Table data={game.home.batters} columns={COLUMNS} />
+      <Table data={game.away.batters} columns={COLUMNS} />
+    </div>
+  );
 }
