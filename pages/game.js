@@ -1,8 +1,8 @@
-import DetailView from "../components/DetailView.js";
+import ScoreTable from "../components/ScoreTable.js";
 
 const Game = () => (
   <div>
-    <DetailView />
+    <ScoreTable />
   </div>
 );
 
