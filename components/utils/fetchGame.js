@@ -29,7 +29,7 @@ export default function fetchGame() {
           scores: _.map(linescore.inning_line_score, "home"),
           batters: _.find(payload.data.boxscore.batting, {
             team_flag: "home"
-          })
+          }).batter
         };
         const away = {
           code: boxscore.away_team_code,
@@ -40,7 +40,7 @@ export default function fetchGame() {
           scores: _.map(linescore.inning_line_score, "away"),
           batters: _.find(payload.data.boxscore.batting, {
             team_flag: "away"
-          })
+          }).batter
         };
 
         return { home, away };
