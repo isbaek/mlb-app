@@ -91,7 +91,8 @@ class ListView extends React.Component {
   }
 
   fetchGames(date) {
-    // Reset state
+    // Reset state for when user has a fav team
+    // todo: solve ui/ux layout for fav team component
     this.setState({ loadingError: "", isLoading: true, games: [] });
 
     const [year, month, day] = date.format("YYYY/MM/DD").split("/", 3);
