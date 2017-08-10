@@ -13,15 +13,14 @@
       {
         "extensions": ["css$"]
       }
-    ]
+    ],
+    "transform-runtime"
   ],
   "presets": [
-    "next/babel",
-    ["env", {
-      "targets": {
-        "browsers": ["last 2 versions", "safari >= 7"]
-      }
-    }]
+    "es2015",
+    "stage-0",
+    "react",
+    "next/babel"
   ],
   "ignore": []
 }

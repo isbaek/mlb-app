@@ -1,5 +1,4 @@
 const path = require('path')
-const glob = require('glob')
 
 module.exports = {
   exportPathMap: function () {
@@ -25,6 +24,7 @@ module.exports = {
         use: ['babel-loader', 'raw-loader', 'postcss-loader']
       }
     )
+
     return config
   }
 }
