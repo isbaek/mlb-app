@@ -24,5 +24,5 @@ export default function ScoreTable({ game }) {
   // so we need to generate them dynamically
   const columns = genColumns(game.home);
 
-  return <Table data={[game.home, game.away]} columns={columns} />;
+  return <Table className="ScoreTable -striped -highlight" data={[game.home, game.away]} columns={columns} />;
 }
