@@ -1,7 +1,6 @@
 import React from "react";
-import ReactTable from "react-table";
-//import "react-table/react-table.css";
 
+import Table from "./Table";
 import fetchGame from "./utils/fetchGame.js";
 
 // column labels for table
@@ -49,13 +48,9 @@ export default class ScoreTable extends React.Component {
     const columns = genColumns(game.home);
 
     return (
-      <ReactTable
+      <Table
         data={[game.home, game.away]}
         columns={columns}
-        showPagination={false}
-        defaultPageSize={2}
-        sortable={false}
-        resizable={false}
       />
     );
   }

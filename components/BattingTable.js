@@ -1,6 +1,6 @@
 import React from "react";
-import ReactTable from "react-table";
 
+import Table from "./Table";
 import fetchGame from "./utils/fetchGame.js";
 
 // column labels for batting table
@@ -41,13 +41,9 @@ export default class BattingTable extends React.Component {
     const game = this.state.game;
 
     return (
-      <ReactTable
+      <Table
         data={game.home.batters}
         columns={COLUMNS}
-        showPagination={false}
-        defaultPageSize={2}
-        sortable={false}
-        resizable={false}
       />
     );
   }
