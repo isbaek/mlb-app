@@ -21,6 +21,7 @@
     "react-datepicker": "^0.52.0",
     "react-dom": "^15.4.2",
     "react-image-fallback": "^7.0.1",
+    "react-img-fallback": "^1.0.1",
     "react-table": "^6.5.3",
     "whatwg-fetch": "^2.0.3"
   },
