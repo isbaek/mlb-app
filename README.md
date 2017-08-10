@@ -21,14 +21,13 @@ This is an application that shows the MLB matches and finished scores for a give
 *  Team Total runs of season
 
 ### Challenges 💥
-* A complicated API with many nested objects
+* An unfamilar API with many nested objects in which the data had to be used selectively
+* making sure to write clean code and break down into fns; this code problem essentially had two big "grandmothers: ListView and DetailView" and thus it was crucial to organize the react components in a hierachical structure, making sure props and state were properly communicated from top down
 * Figuring out routing and using Next.js as routing to navigate between games > game 
-* Organizing the react components in a hierachical structure, making sure props and state were properly communicated from top down
 * Using different libraries and making sure they were reliable/compatible with my code
 * UI/UX: didn't know where to place the favoriting of team; whether to create a separate page (which seemed awkward), games page (crowded) and game page(doesn't make sense) -> you can view the src code on FavoriteTeam.js
 * using create-react-app's babel's preset as the Fetch promise was not accessible by some older browsers
-* making sure to write clean code and break down into fns
-* acccording to caniuse.com, fetch api are not supported by IE and Safari < 10. 3. Although a solution for safari has been implemented, ie standard is hard to satisfy. Thus, best for viewing in Chrome or Firefox
+* acccording to caniuse.com, fetch api are not supported by IE and Safari < 10. 3. Although a solution for safari has been implemented, ie standard is hard to satisfy. Thus, best for viewing in Chrome or Firefox!
 
 
 ### TODO & Ideas
