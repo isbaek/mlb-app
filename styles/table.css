@@ -2,6 +2,47 @@
     margin-bottom: 20px;
 }
 
+.ReactTable .rt-tbody .rt-td:first-of-type,
+.ReactTable .rt-thead .rt-th:first-of-type {
+    padding-left: 20px;
+    text-align: left;
+}
 .ReactTable .rt-tbody .rt-td {
     text-align: center;
+}
+
+.ReactTable .rt-table .rt-thead {
+    box-shadow: none;
+}
+
+.TableHeading {
+    border-radius: 5px 5px 0 0;
+    padding: 5px;
+    text-align: center;
+    font-weight: bold;
+    color: #fff;
+}
+.TableHeading.ScoreTable {
+    background: #434FB8;
+}
+.TableHeading.BattingTable {
+    background: #CA0813;
+}
+
+.ReactTable {
+    border-radius: 0 0 5px 5px;
+}
+.ReactTable.ScoreTable {
+    border: 1px solid #434FB8;
+}
+.ReactTable.ScoreTable .rt-table .rt-thead {
+    color: #fff;
+    background: #434FB8;
+}
+.ReactTable.BattingTable {
+    border: 1px solid #CA0813;
+}
+.ReactTable.BattingTable .rt-table .rt-thead {
+    color: #fff;
+    background: #CA0813;
 }

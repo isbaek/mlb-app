@@ -20,7 +20,7 @@ const COLUMNS = [
 export default function BattingTable({ batters }) {
   return (
     <div>
-      <Table data={batters} columns={COLUMNS} />
+      <Table className="BattingTable -striped -highlight" data={batters} columns={COLUMNS} />
     </div>
   );
 }
