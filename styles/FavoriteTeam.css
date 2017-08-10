@@ -1,0 +1,12 @@
+.TeamList {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.TeamImage {
+  width: 32px;
+  height: auto;
+  margin: 5px;
+}

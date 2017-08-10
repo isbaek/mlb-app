@@ -6,7 +6,8 @@
 @import './Page.css';
 @import 'react-table/react-table.css';
 @import './table.css';
-@import "./ErrorView.css";
+@import './ErrorView.css';
+@import './FavoriteTeam.css';
 
 /* DetailView */
 @import './GameOverview.css';
