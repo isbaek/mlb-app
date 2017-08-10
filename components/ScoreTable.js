@@ -19,39 +19,10 @@ function genColumns(home) {
   );
 }
 
-export default class ScoreTable extends React.Component {
-  constructor(props) {
-    super(props);
+export default function ScoreTable({ game }) {
+  // Columns will vary depending on number of innings
+  // so we need to generate them dynamically
+  const columns = genColumns(game.home);
 
-    this.state = {
-      game: null,
-      isLoading: true
-    };
-  }
-
-  componentDidMount() {
-    // fetch the game scores and batting players
-    fetchGame()
-      // save into state
-      .then(game => this.setState({ game: game, isLoading: false }));
-  }
-
-  render() {
-    if (this.state.isLoading) {
-      return <div>Loading</div>;
-    }
-
-    const game = this.state.game;
-
-    // Columns will vary depending on number of innings
-    // so we need to generate them dynamically
-    const columns = genColumns(game.home);
-
-    return (
-      <Table
-        data={[game.home, game.away]}
-        columns={columns}
-      />
-    );
-  }
+  return <Table data={[game.home, game.away]} columns={columns} />;
 }
