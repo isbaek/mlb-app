@@ -1,6 +1,9 @@
 /* CSS reset */
 @import './reset.css';
 
+/* Fonts */
+@import url('https://fonts.googleapis.com/css?family=PT+Sans:400,700');
+
 /* General */
 @import './Header.css';
 @import './Page.css';
