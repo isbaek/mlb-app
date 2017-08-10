@@ -7,17 +7,18 @@ import fetchGame from "./utils/fetchGame.js";
 // column labels for table
 function genColumns(home) {
   return [].concat(
-  { Header: "Team Name", accessor: "name" },
-  // Dynamically generate inning columns
-  _.range(1, home.scores.length + 1).map(inning => ({
-    Header: String(inning),
-    accessor: `scores.${inning - 1}`,
-  })),
-  { Header: "R", accessor: "runs" },
-  { Header: "H", accessor: "hits" },
-  { Header: "E", accessor: "errors" },
+    { Header: "Team Name", accessor: "name" },
+    // Dynamically generate inning columns
+    _.range(1, home.scores.length + 1).map(inning => ({
+      Header: String(inning),
+      accessor: `scores.${inning - 1}`,
+      minWidth: 20
+    })),
+    { Header: "R", accessor: "runs", minWidth: 20 },
+    { Header: "H", accessor: "hits", minWidth: 20 },
+    { Header: "E", accessor: "errors", minWidth: 20 }
   );
-};
+}
 
 export default class ScoreTable extends React.Component {
   constructor(props) {
@@ -47,9 +48,13 @@ export default class ScoreTable extends React.Component {
     // so we need to generate them dynamically
     const columns = genColumns(game.home);
 
-    return <ReactTable data={[
-      game.home,
-      game.away,
-    ]} columns={columns} />;
+    return (
+      <ReactTable
+        data={[game.home, game.away]}
+        columns={columns}
+        showPagination={false}
+        defaultPageSize={2}
+      />
+    );
   }
 }
