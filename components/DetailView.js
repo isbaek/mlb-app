@@ -6,6 +6,7 @@ import ScoreTable from "./ScoreTable";
 import BattingTable from "./BattingTable";
 import LoadingView from "./LoadingView";
 
+//utils
 import fetchGame from "./utils/fetchGame.js";
 
 export default class DetailView extends React.Component {
@@ -14,7 +15,8 @@ export default class DetailView extends React.Component {
 
     this.state = {
       game: null,
-      isLoading: true
+      isLoading: true,
+      toggleTable: true
     };
   }
 
@@ -24,6 +26,13 @@ export default class DetailView extends React.Component {
       // save into state
       .then(game => this.setState({ game: game, isLoading: false }));
   }
+
+  handleToggle = e => {
+    e.preventDefault();
+    this.setState({
+      toggleTable: !this.state.toggleTable
+    });
+  };
 
   render() {
     if (this.state.isLoading) {
@@ -35,7 +44,10 @@ export default class DetailView extends React.Component {
       <div>
         <GameOverview game={game} />
         <ScoreTable game={game} />
-        <BattingTable game={game} />
+        {this.state.toggleTable
+          ? <BattingTable game={game.home.batters} />
+          : <BattingTable game={game.away.batters} />}
+        <button onClick={this.handleToggle} />
       </div>
     );
   }
