@@ -1,6 +1,7 @@
 //libs
 import React from "react";
 import moment from "moment";
+import _ from "lodash";
 
 import Router from 'next/router'
 import Link from "next/link";
@@ -95,6 +96,10 @@ class ListView extends React.Component {
     Router.push(`/games?date=${date.format("YYYY/MM/DD")}`);
   };
 
+  getFavorite = () => {
+    return localStorage.getItem("fav") || "tor";
+  }
+
   render() {
     // Handle errors in load
     if (this.state.errorLoading) {
@@ -105,11 +110,22 @@ class ListView extends React.Component {
     if (this.state.isLoading) {
       return <LoadingView />;
     }
+
+    // Sort by favorite team
+    const favorite = this.getFavorite();
+    const sortedGames = _.sortBy(this.state.games, (game) => {
+      // Go blue jays !
+      if(game.home.code === favorite || game.away.code === favorite) {
+        return -1;
+      }
+      return 0;
+    })
+
     return (
       <div className="ListView">
         <DatePicker onChange={this.change} date={this.props.date} />
         <div className="GameCards">
-          {this.state.games.map(game => <GameCard game={game} />)}
+          {sortedGames.map(game => <GameCard game={game} />)}
         </div>
       </div>
     );
