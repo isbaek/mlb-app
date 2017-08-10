@@ -12,6 +12,7 @@ No game = "http://gd2.mlb.com/components/game/mlb/year_2016/month_12/day_25/mast
 */
 
 import _ from "lodash";
+import 'whatwg-fetch';
 
 // extracts and cleans up data
 function normalizeGame(game) {

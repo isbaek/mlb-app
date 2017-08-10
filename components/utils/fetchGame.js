@@ -4,6 +4,7 @@
 ////
 
 import _ from "lodash";
+import 'whatwg-fetch';
 
 // Fetch one game
 export default function fetchGame(gameDataDirectory) {
