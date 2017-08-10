@@ -1,9 +1,11 @@
+
+import Page from "../components/Page.js";
 import ScoreTable from "../components/ScoreTable.js";
 
 const Game = () => (
-  <div>
+  <Page>
     <ScoreTable />
-  </div>
+  </Page>
 );
 
 export default Game;
