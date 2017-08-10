@@ -1,4 +1,4 @@
-# MLB Game Schedule Viewer
+# MLB Game Schedule and Score Viewer
 This is an application that shows the MLB matches and finished scores for a given day. Click for [Demo](http://g.recordit.co/ZY6tdssJJ0.gif)
 
 ## Checklist: Requirements
