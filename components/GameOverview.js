@@ -6,7 +6,10 @@ function teamLogoURL(teamCode) {
 
 function LogoScore({ team }) {
   return (
-    <div className={`LogoScore ${team.winner ? "Winner" : ""}`}>
+    <div
+      className={`LogoScore ${team.winner ? "Winner" : ""}`}
+      onClick={batters => team.onClick(batters)}
+    >
       <img className="LogoScoreImage" src={teamLogoURL(team.code)} />
       <p>({team.totalWins} - {team.totalLosses})</p>
     </div>
