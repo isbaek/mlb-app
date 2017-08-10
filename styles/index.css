@@ -12,7 +12,7 @@
 /* DetailView */
 @import './DetailView.css';
 @import './GameOverview.css';
-@import './loadingview.css';
+@import './LoadingView.css';
 @import 'react-datepicker/dist/react-datepicker.css';
 
 /* ListView */
