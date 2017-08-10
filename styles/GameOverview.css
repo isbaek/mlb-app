@@ -1,0 +1,28 @@
+.GameOverview {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.LogoScore, .GameSummary {
+    color: #6a6a6a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.LogoScoreImage {
+    width: 120px;
+}
+
+.GameSummaryTitle {
+    font-size: 28px;
+}
+
+.GameSummaryDate {
+    font-size: 18px;
+    padding: 10px;
+}

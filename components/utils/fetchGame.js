@@ -21,6 +21,8 @@ export default function fetchGame(gameDataDirectory) {
         const home = {
           code: boxscore.home_team_code,
           name: boxscore.home_fname,
+          totalWins: boxscore.home_wins,
+          totalLosses: boxscore.home_loss,
           runs: linescore.home_team_runs,
           hits: linescore.home_team_hits,
           errors: linescore.home_team_errors,
@@ -32,6 +34,8 @@ export default function fetchGame(gameDataDirectory) {
         const away = {
           code: boxscore.away_team_code,
           name: boxscore.away_fname,
+          totalWins: boxscore.away_wins,
+          totalLosses: boxscore.away_loss,
           runs: linescore.away_team_runs,
           hits: linescore.away_team_hits,
           errors: linescore.away_team_errors,
@@ -41,7 +45,7 @@ export default function fetchGame(gameDataDirectory) {
           }).batter
         };
 
-        return { home, away };
+        return { home, away, date: boxscore.date };
       })
       // catch any errors
       .catch(err => {

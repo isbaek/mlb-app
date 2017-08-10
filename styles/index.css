@@ -1,5 +1,11 @@
+/* CSS reset */
 @import './reset.css';
+
+/* General */
+@import './Header.css';
+@import './Page.css';
 @import 'react-table/react-table.css';
 @import './table.css';
-@import './header.css';
-@import './loadingview.css';
+
+/* DetailView */
+@import './GameOverview.css';

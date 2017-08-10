@@ -1,15 +1,12 @@
 import React from "react";
 
 //import presentational components
+import GameOverview from "./GameOverview";
 import ScoreTable from "./ScoreTable";
 import BattingTable from "./BattingTable";
 import LoadingView from "./LoadingView";
 
 import fetchGame from "./utils/fetchGame.js";
-
-function teamLogoURL(teamCode) {
-  return `https://securea.mlb.com/mlb/images/team_logos/124x150/${teamCode}@2x.png`;
-}
 
 export default class DetailView extends React.Component {
   constructor(props) {
@@ -36,6 +33,7 @@ export default class DetailView extends React.Component {
     const game = this.state.game;
     return (
       <div>
+        <GameOverview game={game} />
         <ScoreTable game={game} />
         <BattingTable game={game} />
       </div>
