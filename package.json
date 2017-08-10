@@ -22,7 +22,8 @@
     "dev": "next",
     "build": "next build && next export",
     "start": "next start",
-    "deploy": "npm run build && gh-pages -d out"
+    "cname": "echo 'mlb-app.inseobaek.com' > ./out/CNAME && touch ./out/.nojekyll ",
+    "deploy": "export NODE_ENV=production; npm run build && npm run cname && gh-pages -d out"
   },
   "devDependencies": {
     "babel-preset-es2015": "^6.24.1",
