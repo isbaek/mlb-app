@@ -1,6 +1,9 @@
 import React from "react";
-import ReactTable from "react-table";
-//import "react-table/react-table.css";
+
+//import presentational components
+import ScoreTable from "./ScoreTable";
+import BattingTable from "./BattingTable";
+import LoadingView from "./LoadingView";
 
 import fetchGame from "./utils/fetchGame.js";
 
@@ -13,8 +16,8 @@ export default class DetailView extends React.Component {
     super(props);
 
     this.state = {
-      scores: [],
-      players: []
+      game: null,
+      isLoading: true
     };
   }
 
@@ -22,12 +25,20 @@ export default class DetailView extends React.Component {
     // fetch the game scores and batting players
     fetchGame()
       // save into state
-      .then((scores, players) =>
-        this.setState({ scores: scores, players: players })
-      );
+      .then(game => this.setState({ game: game, isLoading: false }));
   }
 
   render() {
-    return <ReactTable data={data} columns={columns} />;
+    if (this.state.isLoading) {
+      return <LoadingView />;
+    }
+
+    const game = this.state.game;
+    return (
+      <div>
+        <ScoreTable game={game} />
+        <BattingTable game={game} />
+      </div>
+    );
   }
 }
