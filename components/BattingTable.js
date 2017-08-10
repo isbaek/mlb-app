@@ -17,10 +17,10 @@ const COLUMNS = [
   { Header: "OPS", accessor: "ops", minWidth: 20 }
 ];
 
-export default function BattingTable({ game }) {
+export default function BattingTable({ batters }) {
   return (
     <div>
-      <Table data={game} columns={COLUMNS} />
+      <Table data={batters} columns={COLUMNS} />
     </div>
   );
 }
