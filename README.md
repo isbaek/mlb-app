@@ -21,7 +21,7 @@ This is an application that shows the MLB matches and finished scores for a give
 *  Team Total runs of season
 
 ### Challenges 💥
-* An unfamilar API with many nested objects in which the data had to be used selectively
+* An unfamilar Json Data with many nested objects in which the data had to be used selectively
 * making sure to write clean code and break down into fns; this code problem essentially had two big "grandmothers: ListView and DetailView" and thus it was crucial to organize the react components in a hierachical structure, making sure props and state were properly communicated from top down
 * Figuring out routing and using Next.js as routing to navigate between games > game 
 * Using different libraries and making sure they were reliable/compatible with my code
