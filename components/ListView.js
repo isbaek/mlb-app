@@ -3,7 +3,7 @@ import React from "react";
 import moment from "moment";
 import _ from "lodash";
 
-import Router from 'next/router'
+import Router from "next/router";
 import Link from "next/link";
 
 //components
@@ -24,11 +24,13 @@ function teamLogoURL(teamCode) {
 }
 
 function GameCardTeam({ team }) {
-    return <div className={`GameCardTeam ${team.winner ? 'Winner' : ''}`}>
-        <span className="GameCardTeamName">{team.name}</span>
-        <img className="GameCardTeamImage" src={teamLogoURL(team.code)} />
-        <p className="GameCardTeamScore">{team.score}</p>
-    </div>;
+  return (
+    <div className={`GameCardTeam ${team.winner ? "Winner" : ""}`}>
+      <span className="GameCardTeamName">{team.name}</span>
+      <img className="GameCardTeamImage" src={teamLogoURL(team.code)} />
+      <p className="GameCardTeamScore">{team.score}</p>
+    </div>
+  );
 }
 
 function GameCardTeamsVS() {
@@ -42,7 +44,9 @@ function GameCardStatus({ status }) {
 // this is a parent component of the team game card
 function GameCard({ game }) {
   return (
-    <Link href={`/game?id=${game.gameDataDirectory}`} prefetch>
+    //prefetch saves loading time
+    (
+      <Link href={`/game?id=${game.gameDataDirectory}`} prefetch>
         <div className="GameCard">
           <div className="GameCardTeams">
             <GameCardTeam team={game.home} />
@@ -51,7 +55,8 @@ function GameCard({ game }) {
           </div>
           <GameCardStatus status={game.status} />
         </div>
-    </Link>
+      </Link>
+    )
   );
 }
 
@@ -66,7 +71,7 @@ class ListView extends React.Component {
     this.state = {
       loadingError: "",
       isLoading: true,
-      games: [],
+      games: []
     };
   }
 
@@ -80,15 +85,17 @@ class ListView extends React.Component {
 
   fetchGames(date) {
     // Reset state
-    this.setState({loadingError: "", isLoading: true, games: []});
+    this.setState({ loadingError: "", isLoading: true, games: [] });
 
-    const [ year, month, day ] = date.format('YYYY/MM/DD').split('/', 3);
+    const [year, month, day] = date.format("YYYY/MM/DD").split("/", 3);
     // Fetch games for a given day
     fetchGames(year, month, day)
       // save into state
       .then(games => this.setState({ games: games, isLoading: false }))
       // Catch error
-      .catch(err => this.setState({ errorLoading: String(err), isLoading: false }));
+      .catch(err =>
+        this.setState({ errorLoading: String(err), isLoading: false })
+      );
   }
 
   change = date => {
@@ -98,7 +105,7 @@ class ListView extends React.Component {
 
   getFavorite = () => {
     return localStorage.getItem("fav") || "tor";
-  }
+  };
 
   render() {
     // Handle errors in load
@@ -113,13 +120,13 @@ class ListView extends React.Component {
 
     // Sort by favorite team
     const favorite = this.getFavorite();
-    const sortedGames = _.sortBy(this.state.games, (game) => {
+    const sortedGames = _.sortBy(this.state.games, game => {
       // Go blue jays !
-      if(game.home.code === favorite || game.away.code === favorite) {
+      if (game.home.code === favorite || game.away.code === favorite) {
         return -1;
       }
       return 0;
-    })
+    });
 
     return (
       <div className="ListView">
