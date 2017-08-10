@@ -1,11 +1,9 @@
 import Page from "../components/Page.js";
-import ScoreTable from "../components/ScoreTable.js";
-import BattingTable from "../components/BattingTable.js";
+import DetailView from "../components/DetailView";
 
 const Game = () => (
   <Page>
-    <ScoreTable />
-    <BattingTable />
+    <DetailView />
   </Page>
 );
 
