@@ -19,30 +19,28 @@ export default function fetchGame() {
         const linescore = payload.data.boxscore.linescore;
 
         // runs, hits and errors for home and away team
-        const rhe = {
-          home: {
-            runs: linescore.home_team_runs,
-            hits: linescore.home_team_hits,
-            errors: linescore.home_team_hits.home_team_errors
-          },
-          away: {
-            runs: linescore.away_team_runs,
-            hits: linescore.away_team_hits,
-            errors: linescore.away_team_hits.home_team_errors
-          }
+        const home = {
+          name: payload.data.boxscore.home_sname,
+          runs: linescore.home_team_runs,
+          hits: linescore.home_team_hits,
+          errors: linescore.home_team_errors,
+          scores: _.map(linescore.inning_line_score, "home"),
+          batters: _.find(payload.data.boxscore.batting, {
+            team_flag: "home"
+          })
+        };
+        const away = {
+          name: payload.data.boxscore.away_sname,
+          runs: linescore.away_team_runs,
+          hits: linescore.away_team_hits,
+          errors: linescore.away_team_errors,
+          scores: _.map(linescore.inning_line_score, "away"),
+          batters: _.find(payload.data.boxscore.batting, {
+            team_flag: "away"
+          })
         };
 
-        // score array with innings
-        const scores = linescore.inning_line_score;
-        // the batters of the home team
-        const battersHome = _.find(payload.data.boxscore.batting, {
-          team_flag: "home"
-        });
-        // the batters of the away team
-        const battersAway = _.find(payload.data.boxscore.batting, {
-          team_flag: "away"
-        });
-        return { rhe, scores, battersAway, battersHome };
+        return { home, away };
       })
       // catch any errors
       .catch(err => {
