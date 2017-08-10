@@ -15,7 +15,7 @@ import _ from "lodash";
 
 // extracts and cleans up data
 function normalizeGame(game) {
-  // represents the score runs of
+  // represents the score runs
   const runs = game.linescore.r;
   return {
     id: game.id,
