@@ -66,7 +66,6 @@ class ListView extends React.Component {
       loadingError: "",
       isLoading: true,
       games: [],
-      date: moment()
     };
   }
 
@@ -79,13 +78,10 @@ class ListView extends React.Component {
   }
 
   fetchGames(date) {
-    this.setState()
+    // Reset state
+    this.setState({loadingError: "", isLoading: true, games: []});
 
-    // Supose date is formatted as YYYY/MM/DD
-    const [ year, month, day ] = date.split('/', 3);
-    console.log('- year:', year);
-    console.log('- month:', month);
-    console.log('- day:', day);
+    const [ year, month, day ] = date.format('YYYY/MM/DD').split('/', 3);
     // Fetch games for a given day
     fetchGames(year, month, day)
       // save into state
@@ -95,9 +91,6 @@ class ListView extends React.Component {
   }
 
   change = date => {
-    this.setState({
-      date: date
-    });
     // Navigate to specific date
     Router.push(`/games?date=${date.format("YYYY/MM/DD")}`);
   };
@@ -114,7 +107,7 @@ class ListView extends React.Component {
     }
     return (
       <div className="ListView">
-        <DatePicker onChange={this.change} date={this.state.date} />
+        <DatePicker onChange={this.change} date={this.props.date} />
         <div className="GameCards">
           {this.state.games.map(game => <GameCard game={game} />)}
         </div>

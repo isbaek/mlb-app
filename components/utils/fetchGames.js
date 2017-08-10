@@ -41,9 +41,6 @@ function normalizeGame(game) {
 
 // Fetch all the games in a given day
 function fetchGamesForDate(year, month, day) {
-    console.log('year:', year);
-    console.log('month:', month);
-    console.log('day:', day);
   return (
     fetch(
       `http://gd2.mlb.com/components/game/mlb/year_${year}/month_${month}/day_${day}/master_scoreboard.json`
