@@ -21,7 +21,6 @@ export default function BattingTable({ game }) {
   return (
     <div>
       <Table data={game.home.batters} columns={COLUMNS} />
-      <Table data={game.away.batters} columns={COLUMNS} />
     </div>
   );
 }
