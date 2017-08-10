@@ -9,6 +9,7 @@
 
 /* DetailView */
 @import './GameOverview.css';
+@import "../ErrorView.css";
 @import './loadingview.css';
 @import 'react-datepicker/dist/react-datepicker.css';
 
