@@ -1,5 +1,5 @@
 # MLB Game Schedule and Score Viewer ⚾️
-This is an application that shows the MLB matches and finished scores for a given day. Click for [Demo](http://g.recordit.co/ZY6tdssJJ0.gif)
+This is an application that shows the MLB matches and finished scores for a given day. Click for [Demo](http://mlb-app.inseobaek.com)
 * Git Clone, npm i, npm run start, listen;
 
 ## Checklist: Requirements
